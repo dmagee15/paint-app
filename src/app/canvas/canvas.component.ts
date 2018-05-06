@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-canvas',
   templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.css']
+  styleUrls: ['./canvas.component.css'],
+  providers: []
 })
 export class CanvasComponent implements OnInit {
   @ViewChild('theCanvas') theCanvas;
   ctx = null;
   mouseClicked = false;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.theCanvas.nativeElement.width = document.documentElement.clientWidth;
@@ -20,20 +22,17 @@ export class CanvasComponent implements OnInit {
 
   @HostListener('document:mousemove', ['$event']) 
   onMouseMove(e) {
-    console.log(e);
     if(this.mouseClicked == true){
       this.ctx.lineTo(e.clientX,e.clientY);
-      this.ctx.stroke(); // Draw it
+      this.ctx.stroke();
     }
   }
 
   onMouseDown(event){
     this.mouseClicked = true;
-//    this.ctx.fillStyle = "#FF0000";
-//    this.ctx.fillRect(event.clientX,event.clientY,8,8);
     this.ctx.beginPath(); 
-    this.ctx.lineWidth="5";
-    this.ctx.strokeStyle="green"; // Green path
+    this.ctx.lineWidth=this.dataService.getCurrentWidth();
+    this.ctx.strokeStyle=this.dataService.getCurrentColor();
     this.ctx.moveTo(event.clientX,event.clientY);
   }
 
