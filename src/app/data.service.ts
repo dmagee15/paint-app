@@ -5,6 +5,7 @@ export class DataService {
     currentTool = 'draw';
     currentColor = 'black';
     currentWidth = "5";
+    currentText = "Sample Text";
 
     constructor() {}
 
@@ -25,6 +26,12 @@ export class DataService {
     }
     setCurrentWidth(width){
         this.currentWidth = width;
+    }
+    getCurrentText(){
+        return this.currentText;
+    }
+    setCurrentText(text){
+        this.currentText = text;
     }
 
 }

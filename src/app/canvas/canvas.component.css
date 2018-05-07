@@ -1,3 +1,7 @@
 #myCanvas{
-
+    position: absolute;
+    z-index: 100;
+}   
+#ghostCanvas{
+    position: absolute;
 }

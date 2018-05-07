@@ -11,6 +11,7 @@ export class ToolbarComponent implements OnInit {
   activeTool = 'draw';
   activeWidth = '5';
   activeColor = 'black';
+  activeText = 'Sample Text';
 
   constructor(private dataService: DataService) { 
     this.activeTool = dataService.getCurrentTool();
@@ -33,6 +34,11 @@ export class ToolbarComponent implements OnInit {
   changeWidth(width){
     this.dataService.setCurrentWidth(width);
     this.activeWidth = this.dataService.getCurrentWidth();
+  }
+
+  changeText(text){
+    this.dataService.setCurrentText(text);
+    this.activeText = this.dataService.getCurrentText();
   }
 
 }
