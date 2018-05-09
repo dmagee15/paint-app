@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { DataService } from '../data.service';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-canvas',
@@ -15,8 +16,9 @@ export class CanvasComponent implements OnInit {
   mouseClicked = false;
   startX = 0;
   startY = 0;
+  imageSource = null;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private serverService: ServerService) {
     
    }
 
@@ -24,9 +26,15 @@ export class CanvasComponent implements OnInit {
     this.dataService.save.subscribe(
       () => {
         console.log("saved");
+        var image = this.theCanvas.nativeElement.toDataURL();
+        this.serverService.uploadImage(image).subscribe(
+          (response) => {
+            console.log(image);
+            this.imageSource = image;
+          }
+        );
       }
     );
-
     this.theCanvas.nativeElement.width = document.documentElement.clientWidth;
     this.theCanvas.nativeElement.height = document.documentElement.clientHeight;
     this.ghostCanvas.nativeElement.width = document.documentElement.clientWidth;
@@ -120,6 +128,22 @@ export class CanvasComponent implements OnInit {
   onMouseLeave(event){
     this.mouseClicked = false;
   }
+
+//   dataURItoBlob(dataURI) {
+//     var byteString;
+//     if (dataURI.split(',')[0].indexOf('base64') >= 0)
+//         byteString = atob(dataURI.split(',')[1]);
+//     else
+//         byteString = decodeURI(dataURI.split(',')[1]);
+//     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+//     var ia = new Uint8Array(byteString.length);
+//     for (var i = 0; i < byteString.length; i++) {
+//         ia[i] = byteString.charCodeAt(i);
+//     }
+//     return new Blob([ia], {
+//         type: mimeString
+//     });
+// }
 
 
 }
