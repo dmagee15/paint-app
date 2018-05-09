@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class DataService {
+    save = new Subject();
     currentTool = 'draw';
     currentColor = 'black';
     currentWidth = "5";
@@ -32,6 +34,9 @@ export class DataService {
     }
     setCurrentText(text){
         this.currentText = text;
+    }
+    saveImage(){
+        this.save.next();
     }
 
 }

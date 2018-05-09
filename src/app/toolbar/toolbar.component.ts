@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
@@ -12,10 +12,12 @@ export class ToolbarComponent implements OnInit {
   activeWidth = '5';
   activeColor = 'black';
   activeText = 'Sample Text';
+  @Output() onSave: EventEmitter<any> = new EventEmitter();
 
   constructor(private dataService: DataService) { 
     this.activeTool = dataService.getCurrentTool();
     this.activeWidth = dataService.getCurrentWidth();
+    
   }
 
   ngOnInit() {
@@ -39,6 +41,10 @@ export class ToolbarComponent implements OnInit {
   changeText(text){
     this.dataService.setCurrentText(text);
     this.activeText = this.dataService.getCurrentText();
+  }
+
+  saveImage(){
+    this.dataService.saveImage();
   }
 
 }

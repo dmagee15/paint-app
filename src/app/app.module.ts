@@ -20,6 +20,6 @@ import { CanvasComponent } from './canvas/canvas.component';
     FormsModule
   ],
   providers: [DataService],
-  bootstrap: [AppComponent, ToolbarComponent, CanvasComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,9 +16,17 @@ export class CanvasComponent implements OnInit {
   startX = 0;
   startY = 0;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+    
+   }
 
   ngOnInit() {
+    this.dataService.save.subscribe(
+      () => {
+        console.log("saved");
+      }
+    );
+
     this.theCanvas.nativeElement.width = document.documentElement.clientWidth;
     this.theCanvas.nativeElement.height = document.documentElement.clientHeight;
     this.ghostCanvas.nativeElement.width = document.documentElement.clientWidth;
