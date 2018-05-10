@@ -16,7 +16,6 @@ export class CanvasComponent implements OnInit {
   mouseClicked = false;
   startX = 0;
   startY = 0;
-  imageSource = null;
 
   constructor(private dataService: DataService, private serverService: ServerService) {
     
@@ -25,12 +24,15 @@ export class CanvasComponent implements OnInit {
   ngOnInit() {
     this.dataService.save.subscribe(
       () => {
-        console.log("saved");
-        var image = this.theCanvas.nativeElement.toDataURL();
+        var image = {content: this.theCanvas.nativeElement.toDataURL()};
         this.serverService.uploadImage(image).subscribe(
           (response) => {
-            console.log(image);
-            this.imageSource = image;
+            if(response["_body"]){
+              console.log(response["_body"]);
+            }
+            else{
+
+            }
           }
         );
       }

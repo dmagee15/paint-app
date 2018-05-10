@@ -6,8 +6,12 @@ export class ServerService {
 
     constructor(private http: Http) {}
 
-    uploadImage(image: any){
-        return this.http.get('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js');
+    uploadImage(image: {content: string}){
+        return this.http.post('/submit', image);
+    }
+
+    getImage(image: {id: string}){
+        return this.http.post('/image', image);
     }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from '../server.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-displayimage',
@@ -6,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./displayimage.component.css']
 })
 export class DisplayimageComponent implements OnInit {
+  loaded = false;
+  image = null;
+  getData: {id: string};
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private serverService: ServerService) { 
+    this.getData = {id: this.route.snapshot.params['id']};
+    this.serverService.getImage(this.getData).subscribe(
+      (response) => {
+        if(response["_body"]){
+          this.image = JSON.parse(response["_body"]).data;
+          this.loaded = true;
+        }
+        else{
+          console.log("Unsuccessful");
+        }
+      }
+    );
+  }
 
   ngOnInit() {
   }
