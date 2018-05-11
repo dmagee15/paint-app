@@ -12,6 +12,9 @@ export class ToolbarComponent implements OnInit {
   activeWidth = '5';
   activeColor = 'black';
   activeText = 'Sample Text';
+  activeUrl = null;
+  urlLoaded = false;
+
   @Output() onSave: EventEmitter<any> = new EventEmitter();
 
   constructor(private dataService: DataService) { 
@@ -21,6 +24,13 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.url.subscribe(
+      (text: string) => {
+        this.activeUrl = text;
+        this.urlLoaded = true;
+        console.log(this.activeUrl);
+      }
+    );
   }
 
   changeTool(tool){

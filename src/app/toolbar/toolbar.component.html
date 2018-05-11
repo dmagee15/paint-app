@@ -48,6 +48,10 @@
       <li class="nav-item">
         <button class="btn btn-primary" (click)="saveImage()">Save</button>
       </li>
+      
     </ul>
+    <a class="btn btn-link" *ngIf="urlLoaded" [href]="activeUrl">
+      {{ activeUrl }}
+    </a>
   </div>
 </nav>

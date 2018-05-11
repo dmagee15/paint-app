@@ -31,7 +31,7 @@ app.post('/submit', (req, res) => {
     data: req.body.content.toString()
   });
   newImage.save();
-  res.send(newImage.id);
+  res.send(process.env.APP_URL+"/"+newImage.id);
 });
 
 app.post('/image', (req, res) => {

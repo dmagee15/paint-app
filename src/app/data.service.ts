@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class DataService {
     save = new Subject();
+    url = new Subject();
     currentTool = 'draw';
     currentColor = 'black';
     currentWidth = "5";
@@ -37,6 +38,9 @@ export class DataService {
     }
     saveImage(){
         this.save.next();
+    }
+    imageSuccess(text: string){
+        this.url.next(text);
     }
 
 }
