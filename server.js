@@ -16,10 +16,10 @@ const app = express();
 // mongoose.Promise = global.Promise;
 
 var connection = mysql.createConnection({
-  host     : 'mysql.stackcp.com',
-  user     : 'testing13',
-  password : 'testing13',
-  database : 'imagedb-33315725',
+  host     : process.env.DBURL,
+  user     : process.env.DBUSER,
+  password : process.env.DBPASS,
+  database : process.env.DBNAME,
   port: 52077
 });
 connection.connect(function(err){
@@ -106,4 +106,4 @@ app.get('*', (req, res) => {
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+server.listen(port);
