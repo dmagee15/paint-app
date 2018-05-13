@@ -71,8 +71,12 @@ app.post('/submit', (req, res) => {
     data: req.body.content.toString()
   });
   newImage.save();
+  sendData = {
+    id: newImage.id,
+    url: process.env.APP_URL
+  }
   //heroku requires removal of APP_URL variable
-  res.send(newImage.id);
+  res.send(sendData);
 });
 
 app.post('/image', (req, res) => {

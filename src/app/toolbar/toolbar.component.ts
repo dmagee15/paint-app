@@ -13,6 +13,7 @@ export class ToolbarComponent implements OnInit {
   activeColor = 'black';
   activeText = 'Sample Text';
   activeUrl = null;
+  activeUrlHref = null;
   urlLoaded = false;
 
   @Output() onSave: EventEmitter<any> = new EventEmitter();
@@ -25,8 +26,9 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.url.subscribe(
-      (text: string) => {
-        this.activeUrl = text;
+      (text: {id: string, url: string}) => {
+        this.activeUrl = text.url+"/"+text.id;
+        this.activeUrlHref = text.id;
         this.urlLoaded = true;
         console.log(this.activeUrl);
       }

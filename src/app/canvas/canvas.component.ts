@@ -28,7 +28,6 @@ export class CanvasComponent implements OnInit {
         this.serverService.uploadImage(image).subscribe(
           (response) => {
             if(response["_body"]){
-              console.log(response["_body"]);
               this.dataService.imageSuccess(response["_body"]);
             }
             else{
