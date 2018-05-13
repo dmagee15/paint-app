@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DisplayimageComponent implements OnInit {
   loaded = false;
+  fail = false;
   image = null;
   getData: {id: string};
 
@@ -16,12 +17,12 @@ export class DisplayimageComponent implements OnInit {
     this.getData = {id: this.route.snapshot.params['id']};
     this.serverService.getImage(this.getData).subscribe(
       (response) => {
-        if(response["_body"]){
+        if(response["_body"]!="fail"){
           this.image = JSON.parse(response["_body"]).data;
           this.loaded = true;
         }
         else{
-          console.log("Unsuccessful");
+          this.fail = true;
         }
       }
     );
