@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light disable-text-selection">
   <span class="navbar-brand mb-0 h1">Tools</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
       </li>
       
     </ul>
-    <a class="btn btn-link" *ngIf="urlLoaded" [href]="activeUrlHref">
+    <a class="btn btn-link" *ngIf="urlLoaded" [routerLink]="[activeUrlHref]">
       {{ activeUrl }}
     </a>
   </div>

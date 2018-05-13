@@ -131,6 +131,14 @@ export class CanvasComponent implements OnInit {
     this.mouseClicked = false;
   }
 
+  onMouseEnter(event){
+    this.mouseClicked = false;
+  }
+
+  onDblClick(event){
+    this.mouseClicked = false;
+  }
+
 //   dataURItoBlob(dataURI) {
 //     var byteString;
 //     if (dataURI.split(',')[0].indexOf('base64') >= 0)

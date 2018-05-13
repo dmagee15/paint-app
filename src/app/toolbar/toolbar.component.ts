@@ -26,10 +26,9 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.url.subscribe(
-      (text: {id: string, url: string}) => {
-        console.log(text);
-        this.activeUrl = text["url"]+"/"+text["id"];
-        this.activeUrlHref = text["id"];
+      (text: string) => {
+        this.activeUrl = JSON.parse(text).url+"/"+JSON.parse(text).id;
+        this.activeUrlHref = JSON.parse(text).id;
         this.urlLoaded = true;
       }
     );
