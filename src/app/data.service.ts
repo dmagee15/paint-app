@@ -40,7 +40,6 @@ export class DataService {
         this.save.next();
     }
     imageSuccess(text){
-        console.log(text);
         this.url.next(text);
     }
 
