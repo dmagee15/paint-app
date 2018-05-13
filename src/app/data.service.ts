@@ -39,7 +39,8 @@ export class DataService {
     saveImage(){
         this.save.next();
     }
-    imageSuccess(text: {id: string, url: string}){
+    imageSuccess(text){
+        console.log(text);
         this.url.next(text);
     }
 

@@ -30,7 +30,7 @@ export class ToolbarComponent implements OnInit {
         this.activeUrl = text.url+"/"+text.id;
         this.activeUrlHref = text.id;
         this.urlLoaded = true;
-        console.log(this.activeUrl);
+        console.log(text);
       }
     );
   }
