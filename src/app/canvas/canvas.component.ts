@@ -128,6 +128,10 @@ export class CanvasComponent implements OnInit {
   }
 
   onMouseLeave(event){
+    switch(this.dataService.getCurrentTool()){
+      case 'rect':
+      break;
+    }
     this.mouseClicked = false;
   }
 

@@ -1,2 +1,2 @@
-<canvas id="myCanvas" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)" (mouseleave)="onMouseLeave($event)" (mouseenter)="onMouseEnter($event)" (dblclick)="onDblClick($event)" #theCanvas></canvas>
-<canvas id="ghostCanvas" #ghostCanvas></canvas>
+<canvas id="myCanvas" #theCanvas></canvas>
+<canvas id="ghostCanvas" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)" (mouseleave)="onMouseLeave($event)" (mouseenter)="onMouseEnter($event)" (dblclick)="onDblClick($event)" #ghostCanvas></canvas>
