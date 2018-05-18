@@ -30,7 +30,7 @@
         <button class="btn btn-secondary dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Size: {{ activeWidth }}
         </button>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu" id="sizeSlider" aria-labelledby="navbarDropdownMenuLink" (mouseup)="onSizeMouseUp($event)" #sizeUpSlider>
           <input type="range" min="1" max="30" class="slider" id="myRange" [ngModel]="activeWidth" (ngModelChange)="changeWidth(widthBar.value)" #widthBar>
         </div>
       </li>

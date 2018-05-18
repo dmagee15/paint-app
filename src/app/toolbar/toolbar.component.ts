@@ -15,6 +15,7 @@ export class ToolbarComponent implements OnInit {
   activeUrl = null;
   activeUrlHref = null;
   urlLoaded = false;
+  @ViewChild('sizeUpSlider') sizeUpSlider;
 
   @Output() onSave: EventEmitter<any> = new EventEmitter();
 
@@ -56,6 +57,10 @@ export class ToolbarComponent implements OnInit {
 
   saveImage(){
     this.dataService.saveImage();
+  }
+
+  onSizeMouseUp($event){
+    this.sizeUpSlider.nativeElement.classList.remove("show");
   }
 
 }
